@@ -280,3 +280,86 @@ body {
 .footer-link:hover {
     color: white;
 }
+
+/* --- Buttons --- */
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-family: var(--mono-font);
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none; /* Remove default button border */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color-1), var(--accent-color-2));
+    z-index: -1;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+}
+
+.button:hover::before {
+    transform: translateX(0);
+}
+
+.button.primary-button {
+    background: linear-gradient(90deg, var(--accent-color-1), var(--accent-color-2));
+    color: var(--background-color); /* Dark text on bright button */
+}
+
+.button.primary-button:hover {
+    color: white; /* White text on hover */
+    box-shadow: 0 0 15px var(--accent-color-1);
+}
+
+/* For pre and code tags within the usage section */
+.how-to-get-started pre {
+    background-color: var(--background-color);
+    border: 1px solid #2a2a3a;
+    border-left: 4px solid var(--accent-color-1);
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    font-size: 0.9em;
+    overflow-x: auto;
+}
+
+.how-to-get-started code {
+    font-family: var(--mono-font);
+    color: var(--accent-color-1);
+}
+
+.how-to-get-started ol {
+    list-style: none; /* Remove default numbering */
+    padding-left: 0;
+    counter-reset: my-list-counter; /* Reset custom counter for each ordered list */
+}
+
+.how-to-get-started ol li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.how-to-get-started ol li::before {
+    content: counter(my-list-counter) ".";
+    counter-increment: my-list-counter;
+    position: absolute;
+    left: 0;
+    color: var(--accent-color-2);
+    font-weight: 700;
+}
